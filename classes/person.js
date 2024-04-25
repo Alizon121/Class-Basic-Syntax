@@ -16,23 +16,25 @@ introduce() {
 
 
 // Need to insert an array of person instances
-static introducePeople(...info) {
-let elements = info.every(el => el instanceof Person)
+static introducePeople(info) {
+// let elements = info.every(el => el instanceof Person)
 
-if (typeof info !== "object") {
-  console.log('introducePeople only takes an array as an argument.')
+if (!Array.isArray(info)) {
+  throw new Error('introducePeople only takes an array as an argument.');
+  return
 }
-else if (!elements instanceof Person) {
-  console.log("All items in array must be Person class instances.")
+for (let el of info) {
+ if (!(el instanceof Person)) {
+  throw new Error("All items in array must be Person class instances.");
+  return;
+ }
+ info.forEach((el) => el.introduce())
 } 
-else {
-  info.forEach((el) => el.introduce())
-}
-
 }
 
 
 }
+
 
 
 
@@ -41,7 +43,7 @@ const person1 = new Person("Andrew", "Lizon", 29)
 // console.log(person1.introduce())
 
 // Test Case Static Method
-const introductions = Person.introducePeople("Andrew", "Lizon", 29)
+const introductions = Person.introducePeople(person1)
 console.log(introductions)
 /****************************************************************************/
 /******************* DO NOT EDIT CODE BELOW THIS LINE ***********************/
