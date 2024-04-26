@@ -1,5 +1,3 @@
-
-
 class Person {
 
 constructor (firstName, lastName, age) {
@@ -10,7 +8,7 @@ this.age = age
 
 
 introduce() {
-  console.log(`Hi I'm ${this.firstName} ${this.lastName} and I'm ${this.age} years old.`)
+  console.log(`Hi, I'm ${this.firstName} ${this.lastName}, and I'm ${this.age} years old.`)
 // console.log(Object.values(this));
 }
 
@@ -18,7 +16,6 @@ introduce() {
 // Need to insert an array of person instances
 static introducePeople(info) {
 // let elements = info.every(el => el instanceof Person)
-
 if (!Array.isArray(info)) {
   throw new Error('introducePeople only takes an array as an argument.');
   return
@@ -28,23 +25,22 @@ for (let el of info) {
   throw new Error("All items in array must be Person class instances.");
   return;
  }
- info.forEach((el) => el.introduce())
 } 
+info.forEach((el) => el.introduce())
 }
 
 
 }
-
 
 
 
 // Test Case Class Method (call on class instances)
-const person1 = new Person("Andrew", "Lizon", 29)
-// console.log(person1.introduce())
+const person = new Person("kristen", "chauncey", 38);
+console.log(person.introduce())
 
-// Test Case Static Method
-const introductions = Person.introducePeople(person1)
-console.log(introductions)
+// // Test Case Static Method
+// const introductions = Person.introducePeople(person1)
+// console.log(introductions)
 /****************************************************************************/
 /******************* DO NOT EDIT CODE BELOW THIS LINE ***********************/
 
